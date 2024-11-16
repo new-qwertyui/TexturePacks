@@ -154,19 +154,19 @@ local thing = workspace:WaitForChild("Viewmodel").ChildAdded:Connect(function(To
 					Model2.CFrame = ((Tool2:WaitForChild("Handle").CFrame * v.Offset)) * CFrame.Angles(math.rad(0), math.rad(-50), math.rad(0))
 				end
 	
-				if v.Name == "iron" and AlSploitSettings.TexturePack.TexturePackForResources.Value == true then
+				if v.Name == "iron" then
 					ActivateTexturePack()
 	
 					Model2.CFrame = (Model2.CFrame * CFrame.new(0, -0.24, 0))
 				end
 	
-				if v.Name == "diamond" and AlSploitSettings.TexturePack.TexturePackForResources.Value == true then
+				if v.Name == "diamond" then
 					ActivateTexturePack()
 	
 					Model2.CFrame = (Model2.CFrame * CFrame.new(0, 0.027, 0))
 				end
 	
-				if v.Name == "emerald" and AlSploitSettings.TexturePack.TexturePackForResources.Value == true then
+				if v.Name == "emerald" then
 					ActivateTexturePack()
 	
 					Model2.CFrame = (Model2.CFrame * CFrame.new(0, 0.001, 0))
