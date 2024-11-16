@@ -172,26 +172,26 @@ local thing = workspace:WaitForChild("Viewmodel").ChildAdded:Connect(function(To
 					Model2.CFrame = (Model2.CFrame * CFrame.new(0, 0.001, 0))
 				end
 	
-				if v.Name:find("pickaxe") and AlSploitSettings.TexturePack.TexturePackForPickaxes.Value == true then
+				if v.Name:find("pickaxe") then
 					ActivateTexturePack()
 	
 					Model2.CFrame = ((Model2.CFrame * CFrame.new(-0.2, 0, -2.4)) + Vector3.new(0, 0, 2.12))
 				end
 	
-				if v.Name:find("scythe") and AlSploitSettings.TexturePack.TexturePackForScythes.Value == true then
+				if v.Name:find("scythe") then
 					ActivateTexturePack()
 	
 					Model2.CFrame = (Model2.CFrame * CFrame.new(-1.15, 0.2, -2.1)) 
 	
 				end
 	
-				if v.Name == "rageblade" and AlSploitSettings.TexturePack.TexturePackForSwords.Value == true then
+				if v.Name == "rageblade" then
 					ActivateTexturePack()
 	
 					Model2.CFrame = (Model2.CFrame * CFrame.new(0.7, 0, -1)) 
 				end
 	
-				if v.Name:find("sword") and AlSploitSettings.TexturePack.TexturePackForSwords.Value == true then
+				if v.Name:find("sword") then
 					ActivateTexturePack()
 	
 					Model2.CFrame = ((Model2.CFrame * CFrame.new(0.6, 0, -1.1)) + Vector3.new(0, 0, 0.3))
