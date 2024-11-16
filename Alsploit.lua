@@ -1,4 +1,4 @@
-local thing = workspace:WaitForChild("Viewmodel").ChildAdded:Connect(function(Tool)
+local thing = workspace.CurrentCamera:WaitForChild("Viewmodel").ChildAdded:Connect(function(Tool)
 	if Tool:IsA("Accessory") then
 		local TexturePack = game:GetObjects("rbxassetid://14654171957")
 		local Import = TexturePack[1]
