@@ -30,8 +30,46 @@ index = {
         offset = CFrame.Angles(math.rad(0),math.rad(-100),math.rad(-90)),
         model = import:WaitForChild("Emerald_Sword"),
     },
-    
-  
+    {
+        name = "wood_pickaxe",
+        offset = CFrame.new(0,0.45,0) * CFrame.Angles(math.rad(0),math.rad(-10),math.rad(-95)),
+        model = import:WaitForChild("Wood_Pickaxe"),
+    },
+    {
+        name = "stone_pickaxe",
+        offset = CFrame.new(0,0.45,0) * CFrame.Angles(math.rad(0),math.rad(-10),math.rad(-95)),
+        model = import:WaitForChild("Stone_Pickaxe"),
+    },
+    {
+        name = "iron_pickaxe",
+        offset = CFrame.new(0,0.45,0) * CFrame.Angles(math.rad(0),math.rad(-10),math.rad(-95)),
+        model = import:WaitForChild("Iron_Pickaxe"),
+    },
+    {
+        name = "diamond_pickaxe",
+        offset = CFrame.new(0,0.45,0) * CFrame.Angles(math.rad(0),math.rad(-10),math.rad(-95)),
+        model = import:WaitForChild("Diamond_Pickaxe"),
+    },
+    {
+        name = "wood_axe",
+        offset = CFrame.new(0,0.45,-0.45) * CFrame.Angles(math.rad(0),math.rad(-10),math.rad(-95)),
+        model = import:WaitForChild("Wood_Axe"),
+    },
+    {
+        name = "stone_axe",
+        offset = CFrame.new(0,0.45,-0.45) * CFrame.Angles(math.rad(0),math.rad(-10),math.rad(-95)),
+        model = import:WaitForChild("Stone_Axe"),
+    },
+    {
+        name = "iron_axe",
+        offset = CFrame.new(0,0.45,-0.45) * CFrame.Angles(math.rad(0),math.rad(-10),math.rad(-95)),
+        model = import:WaitForChild("Iron_Axe"),
+    },
+    {
+        name = "diamond_axe",
+        offset = CFrame.new(0,0.45,-0.45) * CFrame.Angles(math.rad(0),math.rad(-10),math.rad(-95)),
+        model = import:WaitForChild("Diamond_Axe"),
+    },
 }
 local func = Workspace:WaitForChild("Camera").Viewmodel.ChildAdded:Connect(function(tool)
     if(not tool:IsA("Accessory")) then return end
