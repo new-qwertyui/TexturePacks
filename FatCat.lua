@@ -4,20 +4,19 @@ Pack[1].Parent = game:GetService("ReplicatedStorage")
 local Items = Pack[1]:GetChildren()
 getgenv().texturepack = workspace.CurrentCamera.Viewmodel.DescendantAdded:Connect(function(m)
 	local item = nil
-	local offset
+	local offset = CFrame.new(0,0.45,0) * CFrame.Angles(math.rad(0),math.rad(-10),math.rad(-95))
 	for i, v in Items do
 		if v.Name:lower() == m.Name then
 			item = v
 			if v.Name:find("Sword") then
 				offset = CFrame.Angles(math.rad(0),math.rad(-100),math.rad(-90))
-			elseif v.Name:find("axe") then
-				offset = CFrame.new(0,0.45,0) * CFrame.Angles(math.rad(0),math.rad(-10),math.rad(-95))
 			end
 			break
 		end
 	end
 	if item ~= nil then
 		local mesh = item:Clone()
+		mesh.Anchored = false
 		mesh.Parent = m
 		mesh.CFrame = m:WaitForChild("Handle").CFrame * offset
 		mesh.CFrame *= CFrame.Angles(0,math.rad(-50),0)
