@@ -15,6 +15,12 @@ getgenv().texturepack = workspace.CurrentCamera.Viewmodel.DescendantAdded:Connec
 		end
 	end
 	if item ~= nil then
+		-- VIEWMODEL
+		for i, v in m:GetDescendants() do
+			if (v:IsA("Part") or v:IsA("MeshPart") or v:IsA("UnionOperation")) then
+				v.Transparency = 1
+			end
+		end
 		local mesh = item:Clone()
 		mesh.Anchored = false
 		mesh.Parent = m
@@ -24,6 +30,20 @@ getgenv().texturepack = workspace.CurrentCamera.Viewmodel.DescendantAdded:Connec
 		local weld  = Instance.new("WeldConstraint", mesh)
 		weld.Part0 = mesh
 		weld.Part1 = m:WaitForChild("Handle")
-		m:WaitForChild("Handle").Transparency = 1
+		-- THIRD PERSON
+		for i, v in lplr.Character:WaitForChild(m.Name):GetDescendants() do
+			if (v:IsA("Part") or v:IsA("MeshPart") or v:IsA("UnionOperation")) then
+				v.Transparency = 1
+			end
+		end
+		local mesh = item:Clone()
+		mesh.Anchored = false
+		mesh.Parent = lplr.Character:WaitForChild(m.Name)
+		mesh.CFrame = m:WaitForChild("Handle").CFrame * offset
+		mesh.CFrame *= CFrame.Angles(0,math.rad(-50),0)
+		mesh.Size *= Vector3.new(1.375, 1.375, 1.375)
+		local weld  = Instance.new("WeldConstraint", mesh)
+		weld.Part0 = mesh
+		weld.Part1 = m:WaitForChild("Handle")
 	end
 end)
