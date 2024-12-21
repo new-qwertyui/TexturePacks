@@ -1,107 +1,30 @@
-local Players = game:GetService("Players")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Workspace = game:GetService("Workspace")
-local objs = game:GetObjects("rbxassetid://100570768622198")
-local import = objs[1]
-import.Parent = game:GetService("ReplicatedStorage")
-index = {
-    {
-        name = "wood_sword",
-        offset = CFrame.Angles(math.rad(0),math.rad(-100),math.rad(-90)),
-        model = import:WaitForChild("Wood_Sword"),
-    },
-    {
-        name = "stone_sword",
-        offset = CFrame.Angles(math.rad(0),math.rad(-100),math.rad(-90)),
-        model = import:WaitForChild("Stone_Sword"),
-    },
-    {
-        name = "iron_sword",
-        offset = CFrame.Angles(math.rad(0),math.rad(-100),math.rad(-90)),
-        model = import:WaitForChild("Iron_Sword"),
-    },
-    {
-        name = "diamond_sword",
-        offset = CFrame.Angles(math.rad(0),math.rad(-100),math.rad(-90)),
-        model = import:WaitForChild("Diamond_Sword"),
-    },
-    {
-        name = "emerald_sword",
-        offset = CFrame.Angles(math.rad(0),math.rad(-100),math.rad(-90)),
-        model = import:WaitForChild("Emerald_Sword"),
-    },
-    {
-        name = "wood_pickaxe",
-        offset = CFrame.new(0,0.45,0) * CFrame.Angles(math.rad(0),math.rad(-10),math.rad(-95)),
-        model = import:WaitForChild("Wood_Pickaxe"),
-    },
-    {
-        name = "stone_pickaxe",
-        offset = CFrame.new(0,0.45,0) * CFrame.Angles(math.rad(0),math.rad(-10),math.rad(-95)),
-        model = import:WaitForChild("Stone_Pickaxe"),
-    },
-    {
-        name = "iron_pickaxe",
-        offset = CFrame.new(0,0.45,0) * CFrame.Angles(math.rad(0),math.rad(-10),math.rad(-95)),
-        model = import:WaitForChild("Iron_Pickaxe"),
-    },
-    {
-        name = "diamond_pickaxe",
-        offset = CFrame.new(0,0.45,0) * CFrame.Angles(math.rad(0),math.rad(-10),math.rad(-95)),
-        model = import:WaitForChild("Diamond_Pickaxe"),
-    },
-    {
-        name = "wood_axe",
-        offset = CFrame.new(0,0.45,-0.45) * CFrame.Angles(math.rad(0),math.rad(-10),math.rad(-95)),
-        model = import:WaitForChild("Wood_Axe"),
-    },
-    {
-        name = "stone_axe",
-        offset = CFrame.new(0,0.45,-0.45) * CFrame.Angles(math.rad(0),math.rad(-10),math.rad(-95)),
-        model = import:WaitForChild("Stone_Axe"),
-    },
-    {
-        name = "iron_axe",
-        offset = CFrame.new(0,0.45,-0.45) * CFrame.Angles(math.rad(0),math.rad(-10),math.rad(-95)),
-        model = import:WaitForChild("Iron_Axe"),
-    },
-    {
-        name = "diamond_axe",
-        offset = CFrame.new(0,0.45,-0.45) * CFrame.Angles(math.rad(0),math.rad(-10),math.rad(-95)),
-        model = import:WaitForChild("Diamond_Axe"),
-    },
-}
-local func = Workspace:WaitForChild("Camera").Viewmodel.ChildAdded:Connect(function(tool)
-    if(not tool:IsA("Accessory")) then return end
-    for i,v in pairs(index) do
-        if(v.name == tool.Name) then
-            for i,v in pairs(tool:GetDescendants()) do
-                if(v:IsA("Part") or v:IsA("MeshPart") or v:IsA("UnionOperation")) then
-                    v.Transparency = 1
-                end
-            end
-            local model = v.model:Clone()
-            model.CFrame = tool:WaitForChild("Handle").CFrame * v.offset
-            model.CFrame *= CFrame.Angles(math.rad(0),math.rad(-50),math.rad(0))
-            model.Parent = tool
-            local weld = Instance.new("WeldConstraint",model)
-            weld.Part0 = model
-            weld.Part1 = tool:WaitForChild("Handle")
-            local tool2 = Players.LocalPlayer.Character:WaitForChild(tool.Name)
-            for i,v in pairs(tool2:GetDescendants()) do
-                if(v:IsA("Part") or v:IsA("MeshPart") or v:IsA("UnionOperation")) then
-                    v.Transparency = 1
-                end
-            end
-            local model2 = v.model:Clone()
-            model2.Anchored = false
-            model2.CFrame = tool2:WaitForChild("Handle").CFrame * v.offset
-            model2.CFrame *= CFrame.Angles(math.rad(0),math.rad(-50),math.rad(0))
-            model2.CFrame *= CFrame.new(.7,0,-.8)
-            model2.Parent = tool2
-            local weld2 = Instance.new("WeldConstraint",model)
-            weld2.Part0 = model2
-            weld2.Part1 = tool2:WaitForChild("Handle")
-        end
-    end
+if texturepack then texturepack:Disconnect() end
+local Pack = game:GetObjects("rbxassetid://100570768622198")
+Pack[1].Parent = game:GetService("ReplicatedStorage")
+local Items = Pack[1]:GetChildren()
+getgenv().texturepack = workspace.CurrentCamera.Viewmodel.DescendantAdded:Connect(function(m)
+	local item = nil
+	local offset
+	for i, v in Items do
+		if v.Name:lower() == m.Name then
+			item = v
+			if v.Name:find("Sword") then
+				offset = CFrame.Angles(math.rad(0),math.rad(-100),math.rad(-90))
+			elseif v.Name:find("axe") then
+				offset = CFrame.new(0,0.45,0) * CFrame.Angles(math.rad(0),math.rad(-10),math.rad(-95))
+			end
+			break
+		end
+	end
+	if item ~= nil then
+		local mesh = item:Clone()
+		mesh.Parent = m
+		mesh.CFrame = m:WaitForChild("Handle").CFrame * offset
+		mesh.CFrame *= CFrame.Angles(0,math.rad(-50),0)
+		mesh.Size *= Vector3.new(1.375, 1.375, 1.375)
+		local weld  = Instance.new("WeldConstraint", mesh)
+		weld.Part0 = mesh
+		weld.Part1 = m:WaitForChild("Handle")
+		m:WaitForChild("Handle").Transparency = 1
+	end
 end)
