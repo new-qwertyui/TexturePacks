@@ -126,6 +126,7 @@ local thing = workspace.CurrentCamera:WaitForChild("Viewmodel").ChildAdded:Conne
 	
 					Model.Parent = Tool		
 					Model.Name = v.Name
+						Model.Size *= Vector3.new(1.375, 1.375, 1.375)
 	
 					Model.CFrame = ((Tool:WaitForChild("Handle").CFrame * v.Offset) * CFrame.Angles(math.rad(0), math.rad(-50), math.rad(0)))	
 	
